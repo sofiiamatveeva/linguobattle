@@ -4,14 +4,18 @@ services:
     build: ./api
     ports:
       - 3000:3000
+    volumes:
+      - ./api:/api
     depends_on:
       - mongo
   web-app:
-    build:
-      context: ./web-app
-      dockerfile: Dockerfile
+    build: ./web-app
     ports:
-      - 3080:3080
+      - 4200:4200
+    volumes:
+      - ./web-app:/web-app
+    depends_on:
+      - api
   mongo:
     image: mongo:latest
     ports:

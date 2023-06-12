@@ -2,11 +2,11 @@ FROM node:18
 
 WORKDIR /web-app
 
-COPY package*.json .
+COPY package*.json /web-app/
 RUN npm install
 
 COPY . .
 
-EXPOSE 3080
+EXPOSE 4200
 
 CMD ["npm", "start"]
