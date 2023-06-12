@@ -4,10 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('../routes/index');
+var usersRouter = require('../routes/users');
 
 var app = express();
+
+const mongoose = require('mongoose');
+
+// Подключение к базе данных MongoDB в облаке
+mongoose.connect('mongodb+srv://linguobattle.hr398re.mongodb.net', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Error connecting to MongoDB:', err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
