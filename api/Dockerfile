@@ -2,7 +2,7 @@ FROM node:18
 
 WORKDIR /api
 
-COPY package*.json /api/
+COPY package*.json .
 RUN npm install
 
 COPY . .

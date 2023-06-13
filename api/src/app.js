@@ -4,15 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('../routes/index');
-var usersRouter = require('../routes/users');
-
 var app = express();
 
 const mongoose = require('mongoose');
+const routes = require('./route/user.route');
 
 // Подключение к базе данных MongoDB в облаке
-mongoose.connect('mongodb+srv://linguobattle.hr398re.mongodb.net', {
+mongoose.connect('mongodb+srv://serjmasg:trBZGwEQSucK5skb@linguobattle.hr398re.mongodb.net', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -29,8 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
